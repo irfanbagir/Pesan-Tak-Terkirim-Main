@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --color-brand-bg: #FAF8F4;
+  --color-brand-text: #1C1C1A;
+  --color-brand-muted: #8A8884;
+  --color-brand-border: #C8C4BC;
+  --shadow-minimal: 0 4px 20px rgba(28, 28, 26, 0.03);
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.card-shadow {
+  box-shadow: var(--shadow-minimal);
+}
+
+.border-thin {
+  border-width: 0.5px;
+  border-color: var(--color-brand-border);
+}
+
+.border-b-thin {
+  border-bottom-width: 0.5px;
+  border-bottom-color: var(--color-brand-border);
+}
+
+/* Custom scrollbar for minimal look */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 10px;
+}
