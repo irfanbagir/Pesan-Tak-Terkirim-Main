@@ -30,6 +30,9 @@ const COUNTRY_CODES = [
   { code: '+44', name: 'UK' },
 ];
 
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbziFvnIyZLrW_REAO6t4fYPEsz5vyHiPgU1T6d05DpVBaeZWYAHY9c7Zlr1TVax9lzAvw/exec";
+
 const ARCHIVE_SEEDS = [
   { text: "Terima kasih sudah selalu ada, walau hanya lewat silent support yang kadang bikin aku bingung sendiri.", city: "Jakarta", age: "26" },
   { text: "Aku nggak pernah bilang, tapi aku bangga banget jadi anak Ayah.", city: "Bandung", age: "23" },
@@ -199,12 +202,39 @@ export default function App() {
     }
   };
 
+  const submitToAppsScript = async (cardUrl: string) => {
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify({
+        text: formData.text,
+        name: formData.name,
+        email: formData.email,
+        countryCode: formData.countryCode,
+        phone: formData.phone,
+        city: formData.city || "",
+        age: formData.age || "",
+        selectedCard: cardUrl,
+        createdAt: new Date().toISOString(),
+      }),
+    });
+
+    console.log("✅ Sent to Apps Script");
+  } catch (err) {
+    console.error("❌ Apps Script error:", err);
+  }
+};
+
   const nextStep = (next: Step) => {
     if (next === 'LOADING') {
       // Pick card immediately to start pre-loading while user sees the loading bar
       const randomIndex = Math.floor(Math.random() * PREDETERMINED_CARDS.length);
       const url = PREDETERMINED_CARDS[randomIndex];
       setSelectedCard(url);
+      submitToAppsScript(url);
       
       setStep('LOADING');
       // Preload image manually to ensure it's ready
