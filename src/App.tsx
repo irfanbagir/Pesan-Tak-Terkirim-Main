@@ -44,27 +44,10 @@ const ARCHIVE_SEEDS = [
   { text: "Waktu Ayah bilang 'hati-hati di jalan', aku dengarnya 'Ayah sayang kamu'.", city: "Medan", age: "24" },
 ];
 
-const PREDETERMINED_CARDS = [
-  "https://i.imgur.com/g5h5GPo.png",
-  "https://i.imgur.com/LusXz2Q.png",
-  "https://i.imgur.com/ofwuItm.png",
-  "https://i.imgur.com/W5QhTaV.png",
-  "https://i.imgur.com/jwCs2GW.png",
-  "https://i.imgur.com/nJSJIXs.png",
-  "https://i.imgur.com/4YNml8n.png",
-  "https://i.imgur.com/RrAOMCi.png",
-  "https://i.imgur.com/40L63Vk.png",
-  "https://i.imgur.com/IjFokz1.png",
-  "https://i.imgur.com/c98euJS.png",
-  "https://i.imgur.com/GWff4TU.png",
-  "https://i.imgur.com/f3BqlPu.png",
-  "https://i.imgur.com/Zwoz2ZB.png",
-  "https://i.imgur.com/TfiUw1C.png",
-  "https://i.imgur.com/Ml4wgpM.png",
-  "https://i.imgur.com/0l8k2oG.png",
-  "https://i.imgur.com/3iFDhUs.png",
-  "https://i.imgur.com/FvVO2To.png",
-];
+const PREDETERMINED_CARDS = Array.from(
+  { length: 40 },
+  (_, i) => `/images/cards/${i + 1}.png`
+);
 
 export default function App() {
   const [step, setStep] = useState<Step>('LANDING');
@@ -524,6 +507,8 @@ export default function App() {
                   src={selectedCard} 
                   alt="Shareable Card" 
                   className="w-full h-full object-cover"
+                  onLoad={() => console.log("✅ Image loaded:", selectedCard)}
+                  onError={() => console.log("❌ Image failed:", selectedCard)}
                   referrerPolicy="no-referrer"
                 />
               </div>
