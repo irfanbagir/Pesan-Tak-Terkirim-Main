@@ -255,7 +255,7 @@ export default function App() {
       {/* PERSISTENT HEADER */}
       <div className="flex justify-center items-center mb-4">
         <img 
-          src="https://i.imgur.com/FbpA7ea.png" 
+          src="/images/ui/logo.png" 
           alt="Logo" 
           className="h-24 w-auto object-contain cursor-pointer"
           onClick={() => nextStep('LANDING')}
@@ -278,7 +278,7 @@ export default function App() {
             <div className="flex flex-col items-center max-w-md">
               <div className="w-full max-w-[192px] mb-6 mx-auto">
                 <img 
-                  src="https://i.imgur.com/S4dI9Dz.png" 
+                  src="/images/ui/heart.png" 
                   alt="Feature Visual" 
                   className="w-full h-auto object-contain"
                   referrerPolicy="no-referrer"
@@ -608,7 +608,7 @@ export default function App() {
               {/* BOOK COVER IMAGE */}
               <div className="w-full max-w-[280px] aspect-[4/5] mb-12 rounded-sm overflow-hidden mx-auto">
                 <img 
-                  src="https://i.imgur.com/HZ6WQQy.png" 
+                  src="/images/ui/CS.png" 
                   alt="Pesan Tak Terkirim" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
